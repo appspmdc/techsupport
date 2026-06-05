@@ -1,24 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Techsupport</title>
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Ticket System</title>
 
-    iframe {
-      width: 100%;
-      height: 100vh;
-      border: none;
-    }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: block;
+        }
+
+        .loading {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: #333;
+            font-size: 18px;
+            z-index: 9999;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <iframe
-    src="https://script.google.com/macros/s/AKfycbxadHtlKDB-nVo6C0Tp9xvN-gmOmgMHO2-GyJVglO9RHQEr__Kg2gdPgzTUuMohcy1P/exec">
-  </iframe>
+
+    <div id="loading" class="loading">
+        Loading IT Support Ticket System...
+    </div>
+
+    <iframe
+        id="appFrame"
+        src="https://script.google.com/macros/s/AKfycbxadHtlKDB-nVo6C0Tp9xvN-gmOmgMHO2-GyJVglO9RHQEr__Kg2gdPgzTUuMohcy1P/exec"
+        allow="camera; microphone; geolocation"
+        loading="eager">
+    </iframe>
+
+    <script>
+        const frame = document.getElementById('appFrame');
+        const loading = document.getElementById('loading');
+
+        frame.addEventListener('load', () => {
+            loading.classList.add('hidden');
+        });
+
+        // Fallback in case iframe load event doesn't fire
+        setTimeout(() => {
+            loading.classList.add('hidden');
+        }, 5000);
+    </script>
+
 </body>
 </html>
